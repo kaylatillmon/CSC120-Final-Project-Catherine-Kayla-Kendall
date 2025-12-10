@@ -5,7 +5,7 @@ public class Tyler extends Building {
     public Tyler (){
         super (
             "Tyler House",
-            "Violently out of breath, you stumble into Tyler. Desperately in need of supplies, you decide which rooms to search"
+            "Violently out of breath, you stumble into the Tyler House Lobby. Desperately in need of supplies, you decide which rooms to search"
         );
     }
 
@@ -23,8 +23,9 @@ public class Tyler extends Building {
         System.out.println("There isn't anything left to find here.");
         return;
     }
-        
+        System.out.println("");
         System.out.println ("You observe the cozy lobby of Tyler house and see...");
+        System.out.println("");
         System.out.println("1) A large arched door frame leading into the living room" + (player.hasVisitedTylerLivingRoom() ? " (already searched)" : ""));
         System.out.println("2) A creepy staircase leading into the basement" + (player.hasVisitedTylerBasement() ? " (already searched)" : ""));
         System.out.println("3) A dark hallway leading into the dining room" + (player.hasVisitedTylerDiningHall() ? " (already searched)" : ""));
@@ -74,6 +75,7 @@ public class Tyler extends Building {
         System.out.println("You walk through the arched walkway leading into the living room.");
         System.out.println("The room is littered with tons of comfy couches and littered bookshelves. A well lit fire blazes in the fire place.");
         System.out.println("You see many weapons on shelves in the room.");
+        System.out.println("\n");
         System.out.println("Do you: ");
         System.out.println("a) Near the fireplace to reach for the katana on the mantle? ");
         System.out.println("b) Approach the bookshelves to take the pistol?");
@@ -85,14 +87,18 @@ public class Tyler extends Building {
             case "a" -> {
                 System.out.println("You move towards the fireplace carefully");
                 System.out.println("As you get closer to the mantle, the fire cackles loudly");
-                System.out.println("You quickly reach for the katana on the mantle");
+                System.out.println("You quickly reach for the katana on the mantle...");
+                System.out.println("\n");
                 System.out.println("As you step back from the fireplace, katana in hand, you smell smoke");
                 System.out.println("Your shirt caught on fire, and without water to put it out, your skin is burnt.");
                 player.changeHealth(-10);
                 player.addWeapon("katana");
                 System.out.println("You have lost some health.");
+                System.out.println("\n");
                 System.out.println("You return to the lobby of Tyler House");
-                
+                System.out.println("\n");
+                player.setVisitedTylerLivingRoom(true);
+                play(player, input);
             }
 
             case "b" -> {
@@ -100,6 +106,8 @@ public class Tyler extends Building {
                 System.out.println("The pistol lies on the second bookshelf right infront of you.");
                 System.out.println("You carefully reach for the pistol and put it in your pocket. ");
                 player.addWeapon("Pistol");
+                player.setVisitedTylerLivingRoom(true);
+                play(player, input);
             }
 
             default -> {
@@ -113,9 +121,12 @@ public class Tyler extends Building {
 
     private void exploreTylerCafeteria (Player player, Scanner input) {
         System.out.println("You wander into the Tyler Dining Hall, deserted and abandoned.");
+        System.out.println("\n");
+
         System.out.println("Do you:");
         System.out.println("a) Scavenge for food in the kitchen");
         System.out.println("b) Search for food in the salad bar?");
+        System.out.println("\n");
         
         System.out.println("Your choice? (a/b) ");
         String action = input.nextLine().toLowerCase();
@@ -124,35 +135,47 @@ public class Tyler extends Building {
             case "a" -> {
                 System.out.println("You wander around the kitchen looking for any morsel of food to eat.");
                 System.out.println("You see a sandwich on the countertop but also hear the low rumble of the refridgerator.");
+                System.out.println("\n");
+
                 System.out.println("Do you: ");
                 System.out.println("1) Open the fridge to look for more?");
                 System.out.println("2) Approach the sandwich carefully wrapped on the countertop?");
-                
+                System.out.println("\n");
+
                 System.out.print("Your choice? (1/2) ");
                 String num = input.nextLine();
 
                 if (num.equals("1")) {
                     System.out.println("You open the fridge but there is only a burger on the shelf.");
                     System.out.println("It looks fresh enough to eat.");
+                    System.out.println("\n");
                     System.out.println("As you eat it you realise that it is a Tyler special burger. It is mostly undercooked making you sick");
                     System.out.println("You end up violently vomiting, and feel more famished than ever (-40 health) ");
                     player.changeHealth(-40);
                     System.out.println("The moment you finish vomiting you gather the strength to return to the lobby.");
+                    player.setVisitedTylerDiningHall(true);
+                    play(player, input);
 
                 } else if (num.equals("2")) {
                     System.out.println("You reach for the sandwich wrapped in cling film on the countertop.");
                     System.out.println("In the process you knock over numerous pots and pans, making a loud clang");
                     System.out.println("You quickly eat the sandwich, unaware of what is coming");
+                    System.out.println("\n");
                     player.changeHealth(30);
                     System.out.println("Following the loud sound, zombies rush into the kitchen");
+                    System.out.println("\n");
                     if (player.weapons.isEmpty()){
                         System.out.println("You are unable to fight back, and are mauled to death by the zombies");
                         player.changeHealth(-100); //We need a method to kill the player
+                        player.setVisitedTylerDiningHall(true);
+                        play(player, input);
                     } else {
                         System.out.println("You are able to fight the zombies back with the first item you could find in your pocket");
                         System.out.println("You use the" + player.weapons.get(0));
                         //Methods to use weapons on the zombie
                         System.out.println("This wounds the zombies enough. You rush back to a corner in the lobby of the house.");
+                        player.setVisitedTylerDiningHall(true);
+                        play(player, input);
                     }
 
                 } else {
@@ -167,6 +190,8 @@ public class Tyler extends Building {
                 System.out.println("Being extremely hungry, you end up eating the crackers with blue cheese dressing.");
                 System.out.println("Although not the best, the food is enough sustinence (+11 Health)");
                 player.changeHealth(11);
+                player.setVisitedTylerDiningHall(true);
+                play(player, input);
             }
             default -> {
                 System.out.println("You are extremely famished and end up fainting.");
@@ -218,6 +243,8 @@ public class Tyler extends Building {
                         player.removeWeapon(current_weapon);
                     }
                     System.out.println("You make it back to the lobby panting, deciding what to do next.");
+                    player.setVisitedTylerBasement(true);
+                    play(player, input);
                 }
             }
             case "b" -> {
@@ -226,16 +253,20 @@ public class Tyler extends Building {
                 System.out.println("You near the shelf...");
                 System.out.println("Do you take the shiny object? YES/NO");
                 String answer = input.nextLine();
-                answer.toLowerCase();
+                answer = answer.toLowerCase();
                 if (answer.equals("yes")) {
                     System.out.println("You collect the shiny pocket knife!");
                     player.addWeapon("Pocket Knife");
                     System.out.println("It gives you a tiny paper cut (-15 Health) ");
                     player.changeHealth(-15);
                     System.out.println("You make your way to the lobby with haste");
+                    player.setVisitedTylerBasement(true);
+                    play(player, input);
                 }
                 else {
                     System.out.println("You return back upstairs, empty handed.");
+                    player.setVisitedTylerBasement(true);
+                    play(player, input);
                 }
             }
             default -> {
