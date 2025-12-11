@@ -92,8 +92,24 @@ private void artChallenge2(Player player, Scanner input) {
     }
 }
 
-private void artChallenge3(Player player, Scanner input){
-}}
+ private void artChallenge3(Player player, Scanner input){
+    System.out.println("After beating the past two obstacles, only one stands in the way of you and safety.");
+    System.out.println("You and your Smithie friend are tirelessly persisting, but the door code to the room connected to the untouched exit in the museum needs to be entered.");
+    System.out.println("It seems as though someone tried to enter the code, but ran out of time. Only one number remains to be entered.");
+    System.out.println("Find the pattern and enter the final numbers to complete the door code.");
+    System.out.println("Numbers entered: 3 7 15 31 63 __ __");
+
+    String choice = input.nextLine();
+
+    if (choice == "127 255"){
+        System.out.println("You have beat the game! You and your Smithie survivor made it to the John M. Green Hall PVTA bus stop.");
+        System.out.println("The national guard picked the two of you up from Smith campus and took you to safety.");
+    } else {
+        System.out.println("You died. Game over :(");
+    }
+
+}
+}
 
 
 
