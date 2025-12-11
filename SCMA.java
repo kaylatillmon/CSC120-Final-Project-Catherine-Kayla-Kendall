@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class SCMA extends Building {
@@ -33,6 +34,42 @@ public class SCMA extends Building {
     private void playChallenges(Player player, Scanner input) {
     System.out.println("\nYou have decided to fight");
     artChallenge1(player, input);
+}
+
+private void artChallenge1(Player player, Scanner input){
+    System.out.println("For the next challenge the Museum Docent forces you to play rock, paper, scissors to pass.");
+    System.out.println("Dare you say or spell the wrong thing, death may be at your door. ");
+    Random random = new Random();
+    String [] choices = {"rock","paper","scissors"};
+    
+    while (true) { 
+        System.out.println("Enter your move (rock, paper or scissors):");
+        String playerMove = input.nextLine().toLowerCase();
+
+        if (!playerMove.equals("rock") && !playerMove.equals("scissors") && !playerMove.equals("paper")){
+            System.out.println("HOW DARE YOU! Say a valid move, your life is on the line. (-10 Health)");
+            player.changeHealth(-10);
+            continue;
+        }
+
+        String docentMove = choices [random.nextInt(choices.length)];
+        System.out.println("The docent chose: " + docentMove);
+
+        if (playerMove.equals(docentMove)){
+            System.out.println("It's a tie!");
+        } else if (
+            (playerMove.equals("rock") && docentMove.equals("scissors")) ||
+            (playerMove.equals("paper") && docentMove.equals("rock")) ||
+            (playerMove.equals ("scissors") && docentMove.equals("paper"))
+        ) {
+            System.out.println("Good job!");
+            System.out.println("Now its time to try the next challenge!");
+            artChallenge2(player,input);
+        } else {
+            System.out.println("TRY AGAIN!");
+        }
+        
+        }
 }
 
 private void artChallenge2(Player player, Scanner input) {
