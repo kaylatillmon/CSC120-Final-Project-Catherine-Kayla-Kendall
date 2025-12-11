@@ -34,8 +34,8 @@ public class Seelye extends Building {
             case "3" -> exploreSpinelli(player, input);
             case "4" -> {
             System.out.println("You decide to return to Tyler to grab more supplies.");
-            //Tyler tyler = new Tyler();
-            //tyler.play(player, input);  //
+            Tyler tyler = new Tyler();
+            tyler.play(player, input);  
             System.out.println("After checking Tyler, you make your way back to Seelye...\n");
             play(player, input);        // back to Seelye menu
             return;
@@ -144,14 +144,14 @@ public class Seelye extends Building {
         switch(choice){
             case "1" -> {
                 System.out.println("You have left Seelye. Do you want to return to Tyler, or progress to the final destination?");
-                System.out.println("Where do you go? Tyler of Art Museum\n");
+                System.out.println("Where do you go? Tyler or Art Museum\n");
 
                 String destination = input.nextLine();
-                if(destination == "Tyler"){
+                if(destination.equals("Tyler")){
                     System.out.println("You head over to Tyler for more supplies.");
                     Tyler tyler = new Tyler();
                     tyler.play(player, input); 
-                } else if (destination == "Art Museum"){
+                } else if (destination.equals("Art Museum")){
                     System.out.println("You head to the Art Musuem, the last obstacle between you and safety.");
                 }
             }

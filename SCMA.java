@@ -19,8 +19,8 @@ public class SCMA extends Building {
         String choice = input.nextLine();
         switch (choice){
             case "1" -> {
-            //Tyler tyler = new Tyler();
-            //tyler.play(player, input);  //
+            Tyler tyler = new Tyler();
+            tyler.play(player, input);  //
             System.out.println("After checking Tyler, you make your way back to Smith College Museum of Art...\n");
             play(player, input);        // back to SCMA menu
             return;
