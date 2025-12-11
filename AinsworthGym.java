@@ -46,7 +46,7 @@ public class AinsworthGym extends Building {
         System.out.println("a) Quietly sneak past this figure and make your way toward the glowing red sign that says 'EXIT'");
         System.out.println("b) Push down a metal locker door to try and draw attention from you to the sound, distracting the dark shadowy figure");
         
-        System.out.print("\nWhat's your choice, a or b?");
+        System.out.print("\nWhat's your choice, a or b? ");
         String action = input.nextLine().toLowerCase();
 
         switch (action) {

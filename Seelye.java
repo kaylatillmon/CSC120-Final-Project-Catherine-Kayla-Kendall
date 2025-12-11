@@ -76,7 +76,7 @@ public class Seelye extends Building {
             case "2" -> {
                 System.out.println("You walk closer to the sound and find a fellow Smithie laying on the ground helpless.");
                 System.out.println("There's a chance she's been injured by a zombie. If she has, it's a matter of time before she transitions. If not, you can bring her with you.");
-                System.out.println("Do you want to 1: take the risk and inspect her or 2: leave while you still can?");
+                System.out.println("\nDo you want to 1: take the risk and inspect her or 2: leave while you still can?");
                 System.out.println("Where do you want to go? (1/2)");
 
                 String secChoice = input.nextLine();
@@ -132,19 +132,19 @@ public class Seelye extends Building {
     }
 
     private void returnToGround(Player player, Scanner input){
-        System.out.println("You are now on the ground floor. You can either: ");
-        System.out.println("1: Leave Seelye.");
+        System.out.println("\nYou are now on the ground floor. You can either: ");
+        System.out.println("\n1: Leave Seelye.");
         System.out.println("2: Go to the Jacobsen Center.");
         System.out.println("3: Go to the Spinelli Center.");
         System.out.println("4: Go to the Basement.");
 
-        System.out.println("Where do you go? (1/2/3/4)");
+        System.out.println("\nWhere do you go? (1/2/3/4)");
         String choice = input.nextLine();
 
         switch(choice){
             case "1" -> {
                 System.out.println("You have left Seelye. Do you want to return to Tyler, or progress to the final destination?");
-                System.out.println("Where do you go? Tyler of Art Museum");
+                System.out.println("Where do you go? Tyler of Art Museum\n");
 
                 String destination = input.nextLine();
                 if(destination == "Tyler"){
