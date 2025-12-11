@@ -22,8 +22,8 @@ public class Game {
         this.route = new Building[] {
             new AinsworthGym(),
             new Tyler(),
-            new Seelye()
-            // new SmithArtMuseum
+            new Seelye(),
+            new SCMA()
         };
 
         for (Building b : route) {

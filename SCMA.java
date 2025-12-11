@@ -34,6 +34,9 @@ public class SCMA extends Building {
     System.out.println("\nYou have decided to fight");
     artChallenge1(player, input);
 }
+private void artChallenge1(Player player, Scanner input){
+    artChallenge2(player, input);
+}
 
 private void artChallenge2(Player player, Scanner input) {
     System.out.println("Your second challenge is to unscramble this word:");
