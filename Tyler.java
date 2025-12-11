@@ -25,12 +25,11 @@ public class Tyler extends Building {
     }
         System.out.println("");
         System.out.println ("You observe the cozy lobby of Tyler house and see...");
-        System.out.println("");
-        System.out.println("1) A large arched door frame leading into the living room" + (player.hasVisitedTylerLivingRoom() ? " (already searched)" : ""));
+        System.out.println("\n1) A large arched door frame leading into the living room" + (player.hasVisitedTylerLivingRoom() ? " (already searched)" : ""));
         System.out.println("2) A creepy staircase leading into the basement" + (player.hasVisitedTylerBasement() ? " (already searched)" : ""));
         System.out.println("3) A dark hallway leading into the dining room" + (player.hasVisitedTylerDiningHall() ? " (already searched)" : ""));
-
-        System.out.println("Where do you wish to explore?");
+        System.out.println("   ");
+        System.out.println("Where do you wish to explore?\n");
         String choice =  input.nextLine();
 
         switch (choice) {
@@ -72,37 +71,33 @@ public class Tyler extends Building {
 
     //Living Room Path
     private void exploreLivingRoom(Player player, Scanner input) {
-        System.out.println("You walk through the arched walkway leading into the living room.");
+        System.out.println("\nYou walk through the arched walkway leading into the living room.");
         System.out.println("The room is littered with tons of comfy couches and littered bookshelves. A well lit fire blazes in the fire place.");
         System.out.println("You see many weapons on shelves in the room.");
-        System.out.println("\n");
-        System.out.println("Do you: ");
-        System.out.println("a) Near the fireplace to reach for the katana on the mantle? ");
+        System.out.println("\nDo you: ");
+        System.out.println("\na) Near the fireplace to reach for the katana on the mantle? ");
         System.out.println("b) Approach the bookshelves to take the pistol?");
-        
-        System.out.print("What's your choice, a or b?");
+        System.out.println("     ");
+        System.out.print("What's your choice, a or b? ");
         String action = input.nextLine().toLowerCase();
 
         switch (action) {
             case "a" -> {
-                System.out.println("You move towards the fireplace carefully");
+                System.out.println("\nYou move towards the fireplace carefully");
                 System.out.println("As you get closer to the mantle, the fire cackles loudly");
                 System.out.println("You quickly reach for the katana on the mantle...");
-                System.out.println("\n");
                 System.out.println("As you step back from the fireplace, katana in hand, you smell smoke");
                 System.out.println("Your shirt caught on fire, and without water to put it out, your skin is burnt.");
                 player.changeHealth(-10);
                 player.addWeapon("katana");
-                System.out.println("You have lost some health.");
-                System.out.println("\n");
+                System.out.println("\nYou have lost some health.");
                 System.out.println("You return to the lobby of Tyler House");
-                System.out.println("\n");
                 player.setVisitedTylerLivingRoom(true);
                 play(player, input);
             }
 
             case "b" -> {
-                System.out.println("You move towards the bookshelves, in awe of the large collection");
+                System.out.println("\nYou move towards the bookshelves, in awe of the large collection");
                 System.out.println("The pistol lies on the second bookshelf right infront of you.");
                 System.out.println("You carefully reach for the pistol and put it in your pocket. ");
                 player.addWeapon("Pistol");
@@ -111,7 +106,7 @@ public class Tyler extends Building {
             }
 
             default -> {
-                System.out.println("You decide that violence is not the answer");
+                System.out.println("\nYou decide that violence is not the answer");
                 //System.out.println("You have lost some health.");
                 System.out.println("You do not reach for any weapons, and end up resting on the couch");
                 System.out.println("You stay here until you fall asleep. You will let the apocalyspe run its course");
@@ -205,15 +200,15 @@ public class Tyler extends Building {
 
     // Basement Path
     private void exploreTylerBasement (Player player, Scanner input){
-        System.out.println("You go down the eerie staircase to the basement....");
+        System.out.println("\nYou go down the eerie staircase to the basement....");
         System.out.println("Each step screeches as you descend upon it.");
         System.out.println("You can hear low rumbles of noise from the laundry and trunk rooms...");
 
-        System.out.println("Do you:");
+        System.out.println("\nDo you:");
         System.out.println("a) Explore the Laundry Room?");
         System.out.println("b) Explore the trunk room?");
 
-        System.out.print("Your choice? (a/b)");
+        System.out.print("\nYour choice? (a/b): ");
         String action = input.nextLine().toLowerCase();
 
         switch (action) {
@@ -221,17 +216,17 @@ public class Tyler extends Building {
                 System.out.println("You creep into the laundry machine and suddenly realize that the noises were not from the machines...");
                 System.out.println("IT WAS ZOMBIES");
                 System.out.println("QUICK! Do you...");
-                System.out.println("HIDE");
+                System.out.println("\nHIDE");
                 System.out.println("RUN");
-                System.out.println("Type in your choice...");
+                System.out.println("\nType in your choice...");
                 String user_answer = input.nextLine();
                 user_answer.toLowerCase();
                 if (user_answer.equals("hide")){
-                    System.out.println("You hide behind a laundry machine and let the zombies pass");
+                    System.out.println("\nYou hide behind a laundry machine and let the zombies pass");
                     System.out.println("Then you run up the stairs back into the lobby.");
                 }
                 else if (user_answer.equals("run")){
-                    System.out.println("You immediately make a run for it out of the laundry room.");
+                    System.out.println("\nYou immediately make a run for it out of the laundry room.");
                     System.out.println("Whilst running you slip on some laundry detergent and break your chin. (-50 health) ");
                     player.changeHealth(-50);
                     if (player.weapons.isEmpty()){
@@ -248,18 +243,18 @@ public class Tyler extends Building {
                 }
             }
             case "b" -> {
-                System.out.println("You enter the trunk rooms, millions of plastic containers are infront of you.");
+                System.out.println("\nYou enter the trunk rooms, millions of plastic containers are infront of you.");
                 System.out.println("You spot something shiny on the shelf...");
                 System.out.println("You near the shelf...");
-                System.out.println("Do you take the shiny object? YES/NO");
+                System.out.println("\nDo you take the shiny object? YES/NO");
                 String answer = input.nextLine();
                 answer = answer.toLowerCase();
                 if (answer.equals("yes")) {
-                    System.out.println("You collect the shiny pocket knife!");
+                    System.out.println("\nYou collect the shiny pocket knife!");
                     player.addWeapon("Pocket Knife");
                     System.out.println("It gives you a tiny paper cut (-15 Health) ");
                     player.changeHealth(-15);
-                    System.out.println("You make your way to the lobby with haste");
+                    System.out.println("\nYou make your way to the lobby with haste");
                     player.setVisitedTylerBasement(true);
                     play(player, input);
                 }

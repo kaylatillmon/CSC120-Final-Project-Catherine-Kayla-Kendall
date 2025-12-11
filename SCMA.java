@@ -14,7 +14,7 @@ public class SCMA extends Building {
         System.out.println("You grab your friends hand and you run");
         System.out.println("As you run, you realize the only way to escape to safety is through");
         System.out.println("Do you go back to Tyler for supplies or do you fight your way through the Zombies?");
-        System.out.print("(\n1 for Tyler; 2 to fight)");
+        System.out.println("\n(1 for Tyler; 2 to fight)");
 
         String choice = input.nextLine();
         switch (choice){
@@ -38,13 +38,13 @@ public class SCMA extends Building {
 
 
 private void artChallenge1(Player player, Scanner input){
-    System.out.println("For the next challenge the Museum Docent forces you to play rock, paper, scissors to pass.");
-    System.out.println("Dare you say or spell the wrong thing, death may be at your door. ");
+    System.out.println("\nFor the next challenge the Museum Docent forces you to play rock, paper, scissors to pass.");
+    System.out.println("Dare you say or spell the wrong thing, death may be at your door. \n");
     Random random = new Random();
     String [] choices = {"rock","paper","scissors"};
     
     while (true) { 
-        System.out.println("Enter your move (rock, paper or scissors):");
+        System.out.println("\nEnter your move (rock, paper or scissors):");
         String playerMove = input.nextLine().toLowerCase();
 
         if (!playerMove.equals("rock") && !playerMove.equals("scissors") && !playerMove.equals("paper")){
@@ -63,7 +63,7 @@ private void artChallenge1(Player player, Scanner input){
             (playerMove.equals("paper") && docentMove.equals("rock")) ||
             (playerMove.equals ("scissors") && docentMove.equals("paper"))
         ) {
-            System.out.println("Good job!");
+            System.out.println("\nGood job!");
             System.out.println("Now its time to try the next challenge!");
             artChallenge2(player,input);
         } else {
@@ -74,12 +74,12 @@ private void artChallenge1(Player player, Scanner input){
 }
 
 private void artChallenge2(Player player, Scanner input) {
-    System.out.println("Your second challenge is to unscramble this word:");
-    System.out.println("\nuvseriv");
+    System.out.println("\nYour second challenge is to unscramble this word:");
+    System.out.println("uvseriv");
 
     String correctAnswer = "survive";
 
-    System.out.print("Your answer: ");
+    System.out.print("\nYour answer: ");
     String answer = input.nextLine();
 
     if (answer.equalsIgnoreCase(correctAnswer)) {
@@ -93,17 +93,17 @@ private void artChallenge2(Player player, Scanner input) {
 }
 
  private void artChallenge3(Player player, Scanner input){
-    System.out.println("After beating the past two obstacles, only one stands in the way of you and safety.");
+    System.out.println("\nAfter beating the past two obstacles, only one stands in the way of you and safety.");
     System.out.println("You and your Smithie friend are tirelessly persisting, but the door code to the room connected to the untouched exit in the museum needs to be entered.");
-    System.out.println("It seems as though someone tried to enter the code, but ran out of time. Only one number remains to be entered.");
+    System.out.println("\nIt seems as though someone tried to enter the code, but ran out of time. Only one number remains to be entered.");
     System.out.println("Find the pattern and enter the final numbers to complete the door code.");
-    System.out.println("Numbers entered: 3 7 15 31 63 __ __");
+    System.out.println("\nNumbers entered: 3 7 15 31 63 __ __");
 
     String choice = input.nextLine();
 
     if (choice.equals( "127 255")){
-        System.out.println("You have beat the game! You and your Smithie survivor made it to the John M. Green Hall PVTA bus stop.");
-        System.out.println("The national guard picked the two of you up from Smith campus and took you to safety.");
+        System.out.println("\nYou have beat the game! You and your Smithie survivor made it to the John M. Green Hall PVTA bus stop.");
+        System.out.println("The national guard picked the two of you up from Smith campus and took you to safety.\n");
     } else {
         System.out.println("You died. Game over :(");
     }
