@@ -203,6 +203,7 @@ public class AinsworthGym extends Building {
                     System.out.println("You rush the next couple of rock holds");
                     System.out.println("One hand slips and you're hanging by one hand, burning. (-15 health) ");
                     player.changeHealth(-15);
+                    System.out.println("You now have health: " + player.getHealth()); //IMPLEMENT THIS IN EACH CLASS
                     System.out.println("\nYou somehow regain your footing and you see an upper-level exit door. You escape through there.");
                     System.out.println("\nYou're hand aches and you decide to go to Tyler to get some supplies");
 

@@ -24,12 +24,15 @@ public class Player {
 
     public void changeHealth(int change) {
         this.health += change;
+
         if (this.health < 0) {
             this.health = 0;
         }
         if (this.health > 100) {
             this.health = 100;
         }
+
+        System.out.println("Your health is now: " + this.health);
     }
 
     public boolean isAlive() {

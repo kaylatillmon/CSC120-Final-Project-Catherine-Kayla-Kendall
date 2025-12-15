@@ -40,7 +40,7 @@ public class Seelye extends Building {
             play(player, input);        // back to Seelye menu
             return;
         }
-            //def need to change this part
+
             default -> {
                 System.out.println("You freeze, unable to decide where to go to next, you hear groaning in the distance. The groans get closer...");
                 System.out.println("A group of zombies surrond you as you're stuck, unable to decide where to go next");
@@ -110,9 +110,10 @@ public class Seelye extends Building {
             
             switch (choice){
                 case "1" -> {
-                    System.out.println("You successfully remove the rubble and find many useful resources, one being a map of the Art Museum.");
-                    returnToGround(player, input);
-                    //maybe add map to inventory??
+                System.out.println("You successfully remove the rubble with your new friend's help.");
+                System.out.println("Behind it, you find many useful resources, one being a map of the Art Museum.");
+                inventory.add("Art Museum Map");
+                returnToGround(player, input);
                 }
                 case "2" -> {
                     returnToGround(player, input);
@@ -132,35 +133,68 @@ public class Seelye extends Building {
     }
 
     private void returnToGround(Player player, Scanner input){
-        System.out.println("\nYou are now on the ground floor. You can either: ");
-        System.out.println("\n1: Leave Seelye.");
-        System.out.println("2: Go to the Jacobsen Center.");
-        System.out.println("3: Go to the Spinelli Center.");
-        System.out.println("4: Go to the Basement.");
+    System.out.println("You are now on the ground floor. You can either: ");
+    System.out.println("1: Leave Seelye.");
+    System.out.println("2: Go to the Jacobsen Center.");
+    System.out.println("3: Go to the Spinelli Center.");
+    System.out.println("4: Go to the Basement.");
 
-        System.out.println("\nWhere do you go? (1/2/3/4)");
-        String choice = input.nextLine();
+    System.out.println("Enter a number to choose (1/2/3/4):");
+    String choice = input.nextLine();
 
-        switch(choice){
-            case "1" -> {
-                System.out.println("You have left Seelye. Do you want to return to Tyler, or progress to the final destination?");
-                System.out.println("Where do you go? Tyler or Art Museum\n");
+    switch(choice){
+        case "1" -> {
+        System.out.println("You have left Seelye. Do you want to return to Tyler, or progress to the final destination?");
+        System.out.println("Type \"Tyler\" or \"Art Museum\":");
 
-                String destination = input.nextLine();
-                if(destination.equals("Tyler")){
-                    System.out.println("You head over to Tyler for more supplies.");
-                    Tyler tyler = new Tyler();
-                    tyler.play(player, input); 
-                } else if (destination.equals("Art Museum")){
-                    System.out.println("You head to the Art Musuem, the last obstacle between you and safety.");
-                }
-            }
-            case "2" -> exploreJacobsen(player, input);
-            case "3" -> exploreSpinelli(player, input);
-            case "4" -> exploreBasement(player, input);
+        String destination = input.nextLine().trim();
+
+        if (destination.equalsIgnoreCase("Tyler")) {
+            System.out.println("You head over to Tyler for more supplies.");
+            Tyler tyler = new Tyler();
+            tyler.intro(player);
+            tyler.play(player, input);
+
+            System.out.println("After grabbing what you can from Tyler, you make your way back to Seelye.");
+            returnToGround(player, input);   // back to Seelye menu
+
+        } else if (destination.equalsIgnoreCase("Art Museum")) {
+
+            if (inventory.contains("Art Museum Map")) {
+                System.out.println("Using the map you found in Jacobsen, you navigate safely to the Art Museum.");
+
+            // >>> GO TO SMCA (Art Museum) <<<
+            SCMA scma = new SCMA();       
+            scma.intro(player);
+            scma.play(player, input);
+
+            
+
+        } else {
+            System.out.println("You don't have a map of the Art Museum yet.");
+            System.out.println("It would be too risky to wander without one. Maybe check Jacobsen and the basement first.");
+            returnToGround(player, input);
+        }
+
+        } else {
+        System.out.println("You hesitate and end up circling back into Seelye.");
+        returnToGround(player, input);
+    }
+}
+
+
+        case "2" -> exploreJacobsen(player, input);
+        case "3" -> exploreSpinelli(player, input);
+        case "4" -> exploreBasement(player, input);
+
+        default -> {
+            System.out.println("You freeze, unable to decide where to go next.");
+            System.out.println("Groans echo through the halls as zombies close in.");
+            player.changeHealth(-100);
+            System.out.println("You are now dead.");
         }
     }
-
+}
     public static void main(String[] args) {
         Seelye seelye = new Seelye();
         Player player = new Player ("name", 100);

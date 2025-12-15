@@ -66,6 +66,7 @@ private void artChallenge1(Player player, Scanner input){
             System.out.println("\nGood job!");
             System.out.println("Now its time to try the next challenge!");
             artChallenge2(player,input);
+            return;
         } else {
             System.out.println("TRY AGAIN!");
         }
